@@ -34,11 +34,7 @@ const client = new Client({
 
 // Event for QR code generation
 client.on('qr', (qr) => {
-  console.log('QR CODE:');
-  qrcode.generate(qr, { small: true });
-  
-  // Optionally save QR code to a file for access outside container
-  fs.writeFileSync('./auth_data/last_qr.txt', qr);
+  console.log('QR CODE:',qr);
 });
 
 // Event for ready state

@@ -23,51 +23,12 @@ const client = new Client({
   puppeteer: {
     args: [
       '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-gpu',
-      '--disable-dev-shm-usage',
-      '--disable-accelerated-2d-canvas',
-      '--disable-web-security',
-      '--disable-features=IsolateOrigins,site-per-process',
-      '--disable-features=VizDisplayCompositor',
-      '--single-process',
-      '--no-zygote',
-      '--renderer-process-limit=1',
-      '--no-first-run',
-      '--no-default-browser-check',
-      '--disable-background-networking',
-      '--disable-background-timer-throttling',
-      '--disable-backgrounding-occluded-windows',
-      '--disable-breakpad',
-      '--disable-client-side-phishing-detection',
-      '--disable-component-update',
-      '--disable-default-apps',
-      '--disable-domain-reliability',
-      '--disable-extensions',
-      '--disable-hang-monitor',
-      '--disable-ipc-flooding-protection',
-      '--disable-notifications',
-      '--disable-offer-store-unmasked-wallet-cards',
-      '--disable-popup-blocking',
-      '--disable-prompt-on-repost',
-      '--disable-renderer-backgrounding',
-      '--disable-sync',
-      '--force-color-profile=srgb',
-      '--metrics-recording-only',
-      '--mute-audio',
-      '--no-crash-upload',
-      '--no-pings',
-      '--password-store=basic',
-      '--use-gl=swiftshader',
-      '--use-mock-keychain',
-      '--disable-software-rasterizer',
-      '--user-data-dir=./chrome_data'
+      '--disable-setuid-sandbox'
     ],
     executablePath: '/usr/bin/google-chrome-stable'
   },
   authStrategy: new LocalAuth({
-    clientId: 'Ella',
-    dataPath: './auth_data'
+    clientId: 'Ella'
   })
 });
 

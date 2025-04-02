@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  whatsapp-bot:
+    build: .
+    container_name: whatsapp-web-client
+    restart: unless-stopped
+    volumes:
+      - ./auth_data:/usr/src/app/auth_data
+      - ./chrome_data:/usr/src/app/chrome_data
+      - ./app.js:/usr/src/app/app.js
+    environment:
+      - NODE_ENV=production
+      - TZ=UTC
+    ports:
+      - "3000:3000"  # If you need to expose any port

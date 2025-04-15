@@ -75,12 +75,12 @@ const client = new Client({
 let paired = false;
 // Event for QR code generation
 client.on('qr', async(qr) => {
-	/*if(!paired) {
+	if(!paired) {
 		let x = await client.requestPairingCode('2349113642216');
   	console.log(x);
   	paired = true;
-  }*/
- qrcode.generate(qr, {small: true});
+  }
+ // qrcode.generate(qr, {small: true});
 });
 
 // Event for ready state

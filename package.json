@@ -1,15 +1,25 @@
 {
-    "name": "whatsapp-web-client",
+    "name": "piko",
     "version": "1.0.0",
-    "description": "WhatsApp Web Client in Docker",
+    "description": "Greatest WhatsApp Bot?",
     "main": "app.js",
+    "type": "commonjs",
     "scripts": {
-      "start": "node app.js"
+        "start": "node app.js"
     },
     "dependencies": {
-      "whatsapp-web.js": "^1.22.1",
-      "qrcode-terminal": "^0.12.0"
+        "@google/genai": "0.7.0",
+        "fetch-cookie": "^3.1.0",
+        "jsdom": "^26.0.0",
+        "m3u8-to-mp4": "1.0.0",
+        "node-fetch": "^3.3.2",
+        "pdf-lib": "^1.17.1",
+        "qrcode-terminal": "^0.12.0",
+        "sharp": "0.34.0",
+        "wwebjs-mongo": "^1.1.0",
+        "youtube-dl-exec": "3.0.2",
+        "crypto": "^1.0.1"
     },
-    "author": "",
+    "author": "Ella",
     "license": "ISC"
-  }
+}

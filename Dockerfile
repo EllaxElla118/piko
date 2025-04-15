@@ -1,6 +1,6 @@
 FROM node:18-bullseye-slim
 
-# Install dependencies for Chrome
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
@@ -15,6 +15,12 @@ RUN apt-get update && apt-get install -y \
     libxtst6 \
     xdg-utils \
     libglib2.0-0 \
+    python3 \
+    python3-pip \
+    python-is-python3 \
+    ffmpeg \
+    git \
+    build-essential \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
@@ -31,8 +37,16 @@ WORKDIR /usr/src/app
 # Copy package files
 COPY package*.json ./
 
+ENV YOUTUBE_DL_SKIP_DOWNLOAD = true
+
 # Install app dependencies
 RUN npm install
+
+RUN npm install github:EllaxElla118/whatsapp-web.js
+
+RUN echo "Installed" 
+
+RUN npm list whatsapp-web.js
 
 # Bundle app source
 COPY . .

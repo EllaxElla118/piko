@@ -1,4 +1,4 @@
-const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
+const { Client, LocalAuth, MessageMedia } = require('/home/ella/node_modules/whatsapp-web-large-file.js');
 const qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const path = require('path');
@@ -75,12 +75,12 @@ const client = new Client({
 let paired = false;
 // Event for QR code generation
 client.on('qr', async(qr) => {
-	if(!paired) {
+	/*if(!paired) {
 		let x = await client.requestPairingCode('2349113642216');
   	console.log(x);
   	paired = true;
-  }
- //qrcode.generate(qr, {small: true});
+  }*/
+ qrcode.generate(qr, {small: true});
 });
 
 // Event for ready state
@@ -196,9 +196,9 @@ client.on('message', async msg => {
     } else {
       msg.reply('Please tag the message to be pinned');
     }
-  } else if(msg.body === '/test') {
+  } else if(msg.body.startsWith('/test ')) {
       let u = require('./pdf.js');
-      let name = await u(1024*1024*100, () => console.log(`File created`));
+      let name = await u(1024*1024*parseInt(msg.body.split(' ')[1]), () => console.log(`File created`));
       await client.sendLargeMedia(name, chat.id._serialized);
   } else if (msg.body.startsWith('/chat ')) {
     let a = msg.body.replace("/chat ", "");

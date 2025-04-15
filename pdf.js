@@ -2,8 +2,6 @@ const fs = require("fs");
 const cryptoPackage = require("crypto");
 
 const fileName = "random-bytes.bin";
-const fileSizeInBytes = Number.parseInt(process.argv[2]) || 1024 * 1024 * 2;
-console.log(`Writing ${fileSizeInBytes} bytes`);
 
 const writer = fs.createWriteStream(fileName);
 

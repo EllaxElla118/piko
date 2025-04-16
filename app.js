@@ -1,4 +1,4 @@
-const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
+const { Client, MessageMedia } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const path = require('path');
@@ -78,10 +78,6 @@ const client = new Client({
     executablePath: '/usr/bin/google-chrome-stable',
     headless: true,
   }
-  /*,authStrategy: new LocalAuth({
-    clientId: 'Ella',
-    dataPath: './auth_data'
-  })*/
 });
 
 let paired = false;
@@ -122,6 +118,7 @@ client.initialize().catch(err => {
 });
 
 client.on('message', async msg => {
+  console.log(`Msg received: ${msg.body}`);
   let chat = await msg.getChat();
   await setState('typing', chat);
 

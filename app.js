@@ -5,6 +5,18 @@ const path = require('path');
 const { exec } = require('child_process');
 const util = require('util');
 const sharp = require('sharp');
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello, HTTP world!');
+});
+
+// Start the server
+const PORT = 3034; // You can use any available port
+server.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
+});
 
 // Ensure directories exist
 const ensureDirExists = (dirPath) => {
@@ -65,11 +77,11 @@ const client = new Client({
     ],
     executablePath: '/usr/bin/google-chrome-stable',
     headless: true,
-  },
-  authStrategy: new LocalAuth({
+  }
+  /*,authStrategy: new LocalAuth({
     clientId: 'Ella',
     dataPath: './auth_data'
-  })
+  })*/
 });
 
 let paired = false;

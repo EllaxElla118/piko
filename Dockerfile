@@ -44,15 +44,15 @@ RUN npm install
 
 RUN npm install github:EllaxElla118/whatsapp-web.js
 
-RUN echo "Installed" 
-
-RUN npm list whatsapp-web.js
-
 # Bundle app source
 COPY . .
 
 # Create data directories
 RUN mkdir -p ./auth_data ./chrome_data
+
+RUN chmod 777 ./auth_data ./chrome_data
+
+EXPOSE 3034
 
 # Command to run the app
 CMD ["node", "app.js"]

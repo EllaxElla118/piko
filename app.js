@@ -28,6 +28,28 @@ const ensureDirExists = (dirPath) => {
 ensureDirExists('./auth_data');
 ensureDirExists('./chrome_data');
 
+const https = require('https');
+
+// Replace with your Render app's URL (include the protocol)
+const APP_URL = 'https://piko-7v35.onrender.com';
+
+// Function to send a GET request to your own endpoint
+function keepAlive() {
+  https.get(APP_URL, (res) => {
+    // Optionally, log status code or handle the response
+    console.log(`Self-ping status: ${res.statusCode}`);
+  }).on('error', (err) => {
+    console.error('Error during self-ping:', err);
+  });
+}
+
+// Ping every 10 minutes (adjust the interval if needed)
+const TEN_MINUTES = 1 * 60 * 1000;
+setInterval(keepAlive, TEN_MINUTES);
+
+console.log(`Self-ping scheduled every ${TEN_MINUTES / 60000} minutes to ${APP_URL}`);
+
+
 // Configure the WhatsApp client
 const client = new Client({
     webVersion: "2.2412.54v2",
